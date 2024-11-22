@@ -25,6 +25,7 @@ jobs:
           REDDIT_SECRET: ${{ secrets.REDDIT_SECRET }}
           REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
           REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
+          SUBREDDIT_NAME: ${{ secrets.SUBREDDIT_NAME }}
         run: python fetch_automod.py
 
       - name: Commit and Push changes
