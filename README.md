@@ -1,5 +1,7 @@
 
-# AutoMod Verison Control Template for Reddit Communities
+---
+
+# AutoMod Version Control Template for Reddit Communities
 
 This repository provides a template for managing and syncing Reddit AutoMod configurations using GitHub workflows and Python scripts.
 
@@ -26,31 +28,18 @@ This workflow automatically pushes changes to Reddit whenever a commit is made t
 
 **Trigger**: On push to the `automod/automoderator.yml` file.
 
-**Steps**:
-1. Checkout the repository.
-2. Set up the Python environment.
-3. Install dependencies (PRAW).
-4. Run the `update_automod.py` script to push the changes to Reddit.
-
 ### Fetch AutoMod Configuration Workflow
 
 This manual workflow fetches the current AutoMod configuration from Reddit and updates the repository.
 
 **Trigger**: Manual trigger via GitHub Actions.
 
-**Steps**:
-1. Checkout the repository.
-2. Set up the Python environment.
-3. Install dependencies (PRAW).
-4. Run the `fetch_automod.py` script to fetch the current configuration from Reddit.
-5. Commit and push the fetched configuration to the repository.
-
 ## How to Use
 
 ### Updating AutoMod Configuration
 
 1. Edit `automod/automoderator.yml` to modify the AutoMod configuration.
-2. Push the changes to the repository. The update will automatically be pushed to Reddit via the `update-automod.yml` workflow.
+2. Push the changes to the `main` branch. The update will automatically be pushed to Reddit via the `update-automod.yml` workflow.
 
 ### Fetching Current AutoMod Configuration
 
@@ -61,13 +50,16 @@ This manual workflow fetches the current AutoMod configuration from Reddit and u
 
 Ensure the following secrets are set up in your GitHub repository under **Settings > Secrets and variables > Actions**:
 
-- `REDDIT_CLIENT_ID`
+- `REDDIT_CLIENT_ID` 
 - `REDDIT_SECRET`
 - `REDDIT_USERNAME`
 - `REDDIT_PASSWORD`
+- `SUBREDDIT_NAME` 
 
-These secrets are used by the Python scripts to interact with Reddit’s API. 
+These secrets are used by the Python scripts to interact with Reddit’s API.
 
-## License
+---
 
-This project is licensed under the MIT License.
+In this setup, the **AutoMod Update Workflow** triggers automatically when there are changes to the `automod/automoderator.yml` file. When you push changes to this file, the `update-automod.yml` workflow will take care of syncing the configuration with Reddit. 
+
+For fetching the current configuration from Reddit, you can trigger the **Fetch AutoMod Configuration Workflow** manually through GitHub Actions if your repo loses sync with your subreddit automod code.
